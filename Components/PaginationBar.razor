@@ -1,23 +1,23 @@
 ﻿<nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
         <li class="page-item" @onclick="OnPreviousPage">
-            <a class="page-link" href="#" aria-label="Previous">
+            <div class="page-link" href="#" aria-label="Previous" role='button'>
                 <span aria-hidden="true">&laquo;</span>
-            </a>
+            </div>
         </li>
        
         @for(int i=1; i<= TotalPages; i++)
         {
 			var pageNumber = i;
-            <li class="page-item @(i == CurrentPage ? "active" : string.Empty)" @onclick="() => GoToPage(pageNumber)">
-                <a class="page-link" href="#">@i</a>
+            <li class="page-item @(i == CurrentPage ? "active" : string.Empty)" @onclick="() => GoToPage(pageNumber)" role='button'>
+                <div class="page-link" href="#">@i</div>
             </li>
         }
 
         <li class="page-item" @onclick="OnNextPage">
-            <a class="page-link" href="#" aria-label="Next">
+            <div class="page-link" aria-label="Next" role='button'>
                 <span aria-hidden="true">&raquo;</span>
-            </a>
+            </div>
         </li>
     </ul>
 </nav>

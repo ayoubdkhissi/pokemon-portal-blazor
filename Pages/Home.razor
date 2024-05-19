@@ -1,7 +1,41 @@
 ﻿@page "/"
+@using pokemon_portal_blazor.Components
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<NavBar />
 
-Welcome to your new app.
+<div class="my-3">
+    <input type="text" class="form-control" placeholder="Search for Pokémons" aria-label="Search">
+</div>
+
+<!-- Filter to be implemented later -->
+@* <div class="d-flex justify-content-between mb-3">
+    <select class="form-control w-25">
+        <option>Sort by</option>
+    </select>
+    <select class="form-control w-25">
+        <option>Pokémon type</option>
+    </select>
+    <button class="btn btn-secondary">Clear All</button>
+</div> *@
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="pokemon-card">
+            <img src="path/to/absol.png" alt="Absol" class="pokemon-icon">
+            <h5>Absol</h5>
+            <p>Attack: 44 &nbsp; Defense: 44</p>
+            <div class="pokemon-stats">
+                <span>Icon1</span>
+                <span>Icon2</span>
+                <span>Icon3</span>
+                <span>Icon4</span>
+            </div>
+            <button class="btn btn-primary mt-2">Capture</button>
+        </div>
+    </div>
+    <!-- Repeat the above block for each Pokemon card -->
+</div>
+
+<PaginationBar />

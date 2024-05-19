@@ -16,7 +16,9 @@ public partial class PaginationBar : ComponentBase
 	protected override async Task OnInitializedAsync()
 	{
 		TotalPages = 6;
-	}
+
+        await base.OnInitializedAsync();
+    }
 
 	private void OnPreviousPage()
 	{
@@ -35,4 +37,11 @@ public partial class PaginationBar : ComponentBase
 			OnPageChanged.InvokeAsync(CurrentPage);
 		}
 	}
+
+	private void GoToPage(int pageNumber)
+	{
+        CurrentPage = pageNumber;
+		Console.WriteLine($"Current Page: {CurrentPage}");
+        OnPageChanged.InvokeAsync(CurrentPage);
+    }
 }

@@ -1,19 +1,23 @@
 ﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand ms-3" href="#">Pokemon</a>
+    
+    <NavLink class="navbar-brand ms-3" href="/">
+		<img src="img/poke-logo.svg" alt="logo" width="80" class="d-inline-block align-text-top">
+    </NavLink>
+    
     <button class="navbar-toggler me-2" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse me-5" id="navbarNav">
 
         <ul class="navbar-nav mx-auto ms-auto me-0">
-            <li class="nav-item active ms-4">
-                <a class="nav-link active fw-bold" href="#">Home </a>
+            <li class="nav-item ms-4">
+                <NavLink href="/" class="nav-item nav-link fw-bold" Match="NavLinkMatch.All">Home</NavLink>
             </li>
             <li class="nav-item ms-4">
-                <a class="nav-link fw-bold" href="#">About</a>
+                <NavLink href="about" class="nav-item nav-link fw-bold" Match="NavLinkMatch.All">About</NavLink>
             </li>
             <li class="nav-item ms-4">
-                <a class="nav-link fw-bold" href="#">Contact</a>
+                <NavLink href="contact" class="nav-item nav-link fw-bold" Match="NavLinkMatch.All">Contact</NavLink>
             </li>
         </ul>
     </div>

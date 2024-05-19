@@ -8,7 +8,10 @@
        
         @for(int i=1; i<= TotalPages; i++)
         {
-            <li class="page-item @(i == CurrentPage ? "active" : string.Empty)"><a class="page-link" href="#">@i</a></li>
+			var pageNumber = i;
+            <li class="page-item @(i == CurrentPage ? "active" : string.Empty)" @onclick="() => GoToPage(pageNumber)">
+                <a class="page-link" href="#">@i</a>
+            </li>
         }
 
         <li class="page-item" @onclick="OnNextPage">

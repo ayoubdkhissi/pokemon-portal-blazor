@@ -1,1 +1,10 @@
-﻿
+﻿.bg-disabled{
+    background-color: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+.pagination-box {
+    width: 45px;
+    text-align: center;
+}

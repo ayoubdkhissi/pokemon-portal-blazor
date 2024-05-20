@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Components\PokemonCard.razor.css" />
     <None Remove="Layout\Header.razor.css" />
     <None Remove="Pages\Home.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Components\PokemonCard.razor.css" />
     <Content Include="Layout\Header.razor.css" />
     <Content Include="Pages\Home.razor.css" />
   </ItemGroup>
@@ -19,7 +21,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.2" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

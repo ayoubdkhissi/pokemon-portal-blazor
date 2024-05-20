@@ -35,7 +35,6 @@ public partial class PaginationBar : ComponentBase
 	private async Task GoToPageAsync(int pageNumber)
 	{
         CurrentPage = pageNumber;
-		Console.WriteLine($"Current Page: {CurrentPage}");
         await OnPageChanged.InvokeAsync(CurrentPage);
     }
 }

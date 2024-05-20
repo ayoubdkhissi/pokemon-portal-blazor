@@ -5,7 +5,7 @@ namespace pokemon_portal_blazor.Services;
 
 public class PokemonService : IPokemonService
 {
-    private const string PATH = "/pokemon";
+    private const string PATH = "/api/pokemon";
 
     private readonly HttpClient _httpClient;
 
@@ -17,7 +17,7 @@ public class PokemonService : IPokemonService
     public async Task<ApiResponse<SearchResponse<PokemonDto>>> SearchAsync(SearchRequest searchRequest)
     {
         return await _httpClient.GetFromJsonAsync<ApiResponse<SearchResponse<PokemonDto>>>(
-                       $"{PATH}/search?searchTerm={searchRequest.SearchTerm}?pageNumber={searchRequest.PageNumber}?pageSize={searchRequest.PageSize}") ?? new();
+                       $"{PATH}/search?searchTerm={searchRequest.SearchTerm}&pageNumber={searchRequest.PageNumber}&pageSize={searchRequest.PageSize}") ?? new();
     }
 }
 

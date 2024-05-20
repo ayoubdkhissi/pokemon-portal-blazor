@@ -5,7 +5,9 @@ using pokemon_portal_blazor.Services;
 namespace pokemon_portal_blazor.Pages;
 public partial class Home : ComponentBase
 {
-    private SearchResponse<PokemonDto> SearchResponse;
+    private ApiResponse<SearchResponse<PokemonDto>> ApiResponse = new();
+    private SearchResponse<PokemonDto> PokemonSearchResponse = new();
+    private SearchRequest SearchRequest = new();
 
 
     [Inject] IPokemonService PokemonService { get; set; }
@@ -13,21 +15,29 @@ public partial class Home : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        SearchResponse = new SearchResponse<PokemonDto>()
-        {
-            Items = new List<PokemonDto>(),
-            PageNumber = 1,
-            PageSize = 10,
-            TotalPages = 6,
-            TotalItems = 60
-        };
+        SearchRequest = new SearchRequest { SearchTerm = string.Empty, PageNumber = 1, PageSize = 8 };
+        await FetchData();
 
         await base.OnInitializedAsync();
     }
 
-    private void OnPageChanged(int pageNumber)
+    private async Task OnPageChangedAsync(int pageNumber)
     {
-        SearchResponse.PageNumber = pageNumber;
+        SearchRequest.PageNumber = pageNumber;
+        await FetchData();
+    }
+
+    private async Task OnSearchAsync(string searchTerm)
+    {
+        SearchRequest.SearchTerm = searchTerm;
+        SearchRequest.PageNumber = 1;
+        await FetchData();
+    }
+
+    private async Task FetchData()
+    {
+        ApiResponse = await PokemonService.SearchAsync(SearchRequest);
+        PokemonSearchResponse = ApiResponse.Data;
     }
 }
 

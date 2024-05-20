@@ -1,0 +1,14 @@
+﻿<div class="col-md-3">
+    <div class="pokemon-card">
+        <img src="@Pokemon.ImageUrl" alt="@Pokemon.Name" class="pokemon-icon">
+        <h5>@Pokemon.Name</h5>
+        <p>Attack: @Pokemon.Attack &nbsp; Defense: @Pokemon.Defense</p>
+        <div class="pokemon-stats">
+            @foreach (var power in @Pokemon.Powers)
+            {
+                <img src="@power.ImageUrl" alt="@power.Name" width="40">
+            }
+        </div>
+        <button class="btn btn-primary mt-2">Capture</button>
+    </div>
+</div>

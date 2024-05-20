@@ -6,9 +6,7 @@
 
 <NavBar />
 
-<div class="my-3">
-    <input type="text" class="form-control" placeholder="Search for Pokémons" aria-label="Search">
-</div>
+<SearchBar OnSearch="OnSearchAsync"/>
 
 <!-- Filter to be implemented later -->
 @* <div class="d-flex justify-content-between mb-3">
@@ -22,21 +20,10 @@
 </div> *@
 
 <div class="row">
-    <div class="col-md-3">
-        <div class="pokemon-card">
-            <img src="path/to/absol.png" alt="Absol" class="pokemon-icon">
-            <h5>Absol</h5>
-            <p>Attack: 44 &nbsp; Defense: 44</p>
-            <div class="pokemon-stats">
-                <span>Icon1</span>
-                <span>Icon2</span>
-                <span>Icon3</span>
-                <span>Icon4</span>
-            </div>
-            <button class="btn btn-primary mt-2">Capture</button>
-        </div>
-    </div>
-    <!-- Repeat the above block for each Pokemon card -->
+    @foreach (var pokemon in PokemonSearchResponse.Items)
+    {
+        <PokemonCard Pokemon="pokemon" />
+    }
 </div>
 
-<PaginationBar TotalPages="SearchResponse.TotalPages" CurrentPage="SearchResponse.PageNumber" OnPageChanged="OnPageChanged"/>
+<PaginationBar TotalPages="PokemonSearchResponse.TotalPages" CurrentPage="PokemonSearchResponse.PageNumber" OnPageChanged="OnPageChangedAsync" />

@@ -9,7 +9,7 @@
         @for(int i=1; i<= TotalPages; i++)
         {
 			var pageNumber = i;
-            <li class="page-item @(i == CurrentPage ? "active" : string.Empty)" @onclick="() => GoToPage(pageNumber)" role='button'>
+            <li class="page-item @(i == CurrentPage ? "active" : string.Empty)" @onclick="() => GoToPageAsync(pageNumber)" role='button'>
                 <div class="page-link" href="#">@i</div>
             </li>
         }

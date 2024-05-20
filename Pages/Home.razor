@@ -39,10 +39,4 @@
     <!-- Repeat the above block for each Pokemon card -->
 </div>
 
-<PaginationBar />
-
-
-@code
-{
-    [Inject] private IConfiguration Configuration { get; set; }
-}
+<PaginationBar TotalPages="SearchResponse.TotalPages" CurrentPage="SearchResponse.PageNumber" OnPageChanged="OnPageChanged"/>

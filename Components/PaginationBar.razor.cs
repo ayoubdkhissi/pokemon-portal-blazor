@@ -13,12 +13,6 @@ public partial class PaginationBar : ComponentBase
 	[Parameter]
 	public EventCallback<int> OnPageChanged { get; set; }
 
-	protected override async Task OnInitializedAsync()
-	{
-		TotalPages = 6;
-
-        await base.OnInitializedAsync();
-    }
 
 	private void OnPreviousPage()
 	{
@@ -29,19 +23,19 @@ public partial class PaginationBar : ComponentBase
 		}
 	}
 
-	private void OnNextPage()
+	private async void OnNextPage()
 	{
 		if (CurrentPage < TotalPages)
 		{
 			CurrentPage++;
-			OnPageChanged.InvokeAsync(CurrentPage);
+            await OnPageChanged.InvokeAsync(CurrentPage);
 		}
 	}
 
-	private void GoToPage(int pageNumber)
+	private async Task GoToPageAsync(int pageNumber)
 	{
         CurrentPage = pageNumber;
 		Console.WriteLine($"Current Page: {CurrentPage}");
-        OnPageChanged.InvokeAsync(CurrentPage);
+        await OnPageChanged.InvokeAsync(CurrentPage);
     }
 }

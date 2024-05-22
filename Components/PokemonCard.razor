@@ -9,6 +9,13 @@
                 <img src="@power.ImageUrl" alt="@power.Name" width="40">
             }
         </div>
-        <button class="btn btn-primary mt-2">Capture</button>
+        @if(Pokemon.IsCaptured)
+        {
+            <button class="btn btn-danger mt-2" @onclick="ReleasePokemonAsync">Release</button>
+        }
+        else
+        {
+            <button class="btn btn-primary mt-2" @onclick="CapturePokemonAsync">Capture</button>
+        }
     </div>
 </div>

@@ -3,5 +3,5 @@
 namespace pokemon_portal_blazor.Layout;
 public partial class Header : ComponentBase
 {
-    
+
 }

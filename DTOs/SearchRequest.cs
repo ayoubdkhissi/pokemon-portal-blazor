@@ -15,7 +15,7 @@ public class SearchRequest
     public string SearchTerm { get; set; } = string.Empty;
 
     private const int MaxPageSize = 50;
-    private int _pageSize = 10;
+    private int _pageSize = 8;
 
     private int _pageNumber = 1;
 }

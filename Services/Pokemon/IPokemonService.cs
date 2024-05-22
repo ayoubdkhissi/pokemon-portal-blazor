@@ -4,6 +4,10 @@ namespace pokemon_portal_blazor.Services;
 
 public interface IPokemonService
 {
-    Task<ApiResponse<SearchResponse<PokemonDto>>> SearchAsync(SearchRequest searchRequest);
+    Task<SearchResponse<PokemonDto>> SearchAsync(SearchRequest searchRequest);
+    Task<SearchResponse<PokemonDto>> GetMyPokemonsAsync(SearchRequest searchRequest);
+    Task<bool> IsCapturedAsync(int id);
+    Task CaptureAsync(PokemonDto pokemon);
+    Task ReleaseAsync(int id);
 }
 

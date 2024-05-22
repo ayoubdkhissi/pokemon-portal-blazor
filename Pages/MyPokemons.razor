@@ -5,12 +5,13 @@
 
 <NavBar/>
 
-<div class="my-3">
-    <input type="text" class="form-control" placeholder="Search for Pokémons" aria-label="Search">
+<SearchBar OnSearch="OnSearchAsync" />
+
+<div class="row">
+    @foreach (var pokemon in PokemonSearchResponse.Items)
+    {
+        <PokemonCard Pokemon="pokemon" OnPokemonReleased="OnPokemonRelease" />
+    }
 </div>
 
-<div class="my-3">My Pokemons Page is under construction</div>
-
-@code {
-
-}
+<PaginationBar TotalPages="PokemonSearchResponse.TotalPages" CurrentPage="PokemonSearchResponse.PageNumber" OnPageChanged="OnPageChangedAsync" />

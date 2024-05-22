@@ -22,7 +22,7 @@
 <div class="row">
     @foreach (var pokemon in PokemonSearchResponse.Items)
     {
-        <PokemonCard Pokemon="pokemon" />
+        <PokemonCard Pokemon="pokemon" OnPokemonCaptured="OnPokemonCapture" OnPokemonReleased="OnPokemonRelease" />
     }
 </div>
 

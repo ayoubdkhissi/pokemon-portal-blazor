@@ -5,7 +5,7 @@ public partial class SearchBar
 {
     private string SearchTerm { get; set; } = string.Empty;
     private Timer? DebounceTimer;
-    private const int DEBOUNCE_TIME = 500; 
+    private const int DEBOUNCE_TIME = 500;
 
     [Parameter]
     public EventCallback<string> OnSearch { get; set; }

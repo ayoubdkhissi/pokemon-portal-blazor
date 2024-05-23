@@ -49,8 +49,12 @@ public partial class MyPokemons : ComponentBase
         ConfirmationModal.Show();
     }
 
-    private async Task ReleaseAllPokemonsAsync()
+    private async Task ReleaseAllPokemonsAsync(bool confirmed)
     {
+        if (!confirmed)
+        {
+            return;
+        }
         await PokemonService.ReleaseAllAsync();
         PokemonSearchResponse = new();
     }

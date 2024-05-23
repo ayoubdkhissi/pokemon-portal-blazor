@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using pokemon_portal_blazor.Components;
 using pokemon_portal_blazor.DTOs;
 using pokemon_portal_blazor.Services;
 
@@ -6,9 +7,10 @@ namespace pokemon_portal_blazor.Pages;
 public partial class MyPokemons : ComponentBase
 {
     [Inject] private IPokemonService PokemonService { get; set; }
+    
     private SearchResponse<PokemonDto>? PokemonSearchResponse;
     private SearchRequest SearchRequest = new();
-
+    private ConfirmationModal ConfirmationModal;
 
     protected override async Task OnInitializedAsync()
     {
@@ -41,10 +43,15 @@ public partial class MyPokemons : ComponentBase
         await FetchData();
     }
 
+
+    private void ShowConfirmationModal()
+    {
+        ConfirmationModal.Show();
+    }
+
     private async Task ReleaseAllPokemonsAsync()
     {
         await PokemonService.ReleaseAllAsync();
         PokemonSearchResponse = new();
     }
-
 }

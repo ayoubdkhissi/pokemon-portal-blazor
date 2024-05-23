@@ -9,7 +9,7 @@
 
 @*Release all Pokemons button*@
 <div class="d-flex justify-content-end my-3">
-    <button class="btn btn-danger" @onclick="ReleaseAllPokemonsAsync">Release All Pokémons</button>
+    <button class="btn btn-danger" @onclick="ShowConfirmationModal">Release All Pokémons</button>
 </div>
 
 @if (PokemonSearchResponse == null)
@@ -36,3 +36,5 @@ else
     </div>
     <PaginationBar TotalPages="PokemonSearchResponse.TotalPages" CurrentPage="PokemonSearchResponse.PageNumber" OnPageChanged="OnPageChangedAsync" />
 }
+
+<ConfirmationModal @ref="ConfirmationModal" OnConfirmed="ReleaseAllPokemonsAsync" />

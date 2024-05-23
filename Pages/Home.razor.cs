@@ -5,7 +5,7 @@ using pokemon_portal_blazor.Services;
 namespace pokemon_portal_blazor.Pages;
 public partial class Home : ComponentBase
 {
-    private SearchResponse<PokemonDto> PokemonSearchResponse = new();
+    private SearchResponse<PokemonDto>? PokemonSearchResponse;
     private SearchRequest SearchRequest = new();
 
 
@@ -53,7 +53,7 @@ public partial class Home : ComponentBase
         }
         PokemonSearchResponse = new()
         {
-            Items = PokemonSearchResponse.Items.Select(p =>
+            Items = PokemonSearchResponse!.Items.Select(p =>
             {
                 if (p.Id == pokemon.Id)
                 {
@@ -73,7 +73,7 @@ public partial class Home : ComponentBase
     {
         PokemonSearchResponse = new()
         {
-            Items = PokemonSearchResponse.Items.Select(p =>
+            Items = PokemonSearchResponse!.Items.Select(p =>
             {
                 if (p.Id == id)
                 {

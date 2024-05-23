@@ -9,5 +9,6 @@ public interface IPokemonService
     Task<bool> IsCapturedAsync(int id);
     Task CaptureAsync(PokemonDto pokemon);
     Task ReleaseAsync(int id);
+    Task ReleaseAllAsync();
 }
 

@@ -6,7 +6,7 @@ namespace pokemon_portal_blazor.Pages;
 public partial class MyPokemons : ComponentBase
 {
     [Inject] private IPokemonService PokemonService { get; set; }
-    private SearchResponse<PokemonDto> PokemonSearchResponse = new();
+    private SearchResponse<PokemonDto>? PokemonSearchResponse;
     private SearchRequest SearchRequest = new();
 
 
@@ -39,6 +39,12 @@ public partial class MyPokemons : ComponentBase
     {
         await PokemonService.ReleaseAsync(id);
         await FetchData();
+    }
+
+    private async Task ReleaseAllPokemonsAsync()
+    {
+        await PokemonService.ReleaseAllAsync();
+        PokemonSearchResponse = new();
     }
 
 }

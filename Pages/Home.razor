@@ -6,7 +6,7 @@
 
 <NavBar />
 
-<SearchBar OnSearch="OnSearchAsync"/>
+<SearchBar OnSearch="OnSearchAsync" />
 
 <!-- Filter to be implemented later -->
 @* <div class="d-flex justify-content-between mb-3">
@@ -19,11 +19,27 @@
     <button class="btn btn-secondary">Clear All</button>
 </div> *@
 
-<div class="row">
-    @foreach (var pokemon in PokemonSearchResponse.Items)
-    {
-        <PokemonCard Pokemon="pokemon" OnPokemonCaptured="OnPokemonCapture" OnPokemonReleased="OnPokemonRelease" />
-    }
-</div>
-
-<PaginationBar TotalPages="PokemonSearchResponse.TotalPages" CurrentPage="PokemonSearchResponse.PageNumber" OnPageChanged="OnPageChangedAsync" />
+@if (PokemonSearchResponse == null)
+{
+    <div class="d-flex justify-content-center my-4">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
+}
+else if (!PokemonSearchResponse.Items.Any())
+{
+    <div class="alert alert-warning" role="alert">
+        No Pokémons found.
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var pokemon in PokemonSearchResponse.Items)
+        {
+            <PokemonCard Pokemon="pokemon" OnPokemonCaptured="OnPokemonCapture" OnPokemonReleased="OnPokemonRelease" />
+        }
+    </div>
+    <PaginationBar TotalPages="PokemonSearchResponse.TotalPages" CurrentPage="PokemonSearchResponse.PageNumber" OnPageChanged="OnPageChangedAsync" />
+}

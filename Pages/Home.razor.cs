@@ -24,8 +24,8 @@ public partial class Home : ComponentBase
     {
         SearchRequest = new()
         {
-            PageNumber = pageNumber,
-            PageSize = 8,
+            SearchTerm = SearchRequest.SearchTerm,
+            PageNumber = pageNumber
         };
         await FetchData();
     }

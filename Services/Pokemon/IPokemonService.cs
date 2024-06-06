@@ -10,5 +10,6 @@ public interface IPokemonService
     Task CaptureAsync(PokemonDto pokemon);
     Task ReleaseAsync(int id);
     Task ReleaseAllAsync();
+    Task<StatisticsModel?> GetStatisticsAsync();
 }
 

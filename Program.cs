@@ -14,5 +14,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["API_BASE_URL"]!) });
 builder.Services.AddServices();
 
+builder.Services.AddBlazorBootstrap();
+
 
 await builder.Build().RunAsync();

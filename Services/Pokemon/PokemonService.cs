@@ -32,7 +32,7 @@ public class PokemonService : IPokemonService
         {
             p.IsCaptured = localCapturedPokemons.Exists(lp => lp.Id == p.Id);
             return p;
-        }).ToList() ?? new();
+        }).ToList() ?? [];
 
         return pokemonsSearchResponse!;
     }
@@ -72,6 +72,7 @@ public class PokemonService : IPokemonService
         pokemon.IsCaptured = true;
         myPokemons.Add(pokemon);
         await _localStorageService.SetItemAsync(MY_POKEMONS_KEY, JsonSerializer.Serialize(myPokemons));
+        await _httpClient.PutAsync($"{PATH}/Catch/{pokemon.Id}", null);
     }
 
     public async Task ReleaseAsync(int id)
@@ -79,17 +80,30 @@ public class PokemonService : IPokemonService
         var myPokemons = (await GetAllMyPokemons()).ToList();
         myPokemons.RemoveAll(p => p.Id == id);
         await _localStorageService.SetItemAsync(MY_POKEMONS_KEY, JsonSerializer.Serialize(myPokemons));
+        await _httpClient.PutAsync($"{PATH}/Release/{id}", null);
     }
 
     public async Task ReleaseAllAsync()
     {
+        var myPokemons = await GetAllMyPokemons();
         await _localStorageService.RemoveItemAsync(MY_POKEMONS_KEY);
+
+        var ids = myPokemons.Select(p => p.Id).ToList();
+        await _httpClient.PutAsJsonAsync($"{PATH}/ReleaseMultiple", ids);
     }
+
+
 
     private async Task<IEnumerable<PokemonDto>> GetAllMyPokemons()
     {
         var myPokemonsJson = await _localStorageService.GetItemAsync(MY_POKEMONS_KEY);
         return JsonSerializer.Deserialize<IEnumerable<PokemonDto>>(myPokemonsJson ?? "[]") ?? [];
+    }
+
+    public async Task<StatisticsModel?> GetStatisticsAsync()
+    {
+        var apiResponse = await _httpClient.GetFromJsonAsync<ApiResponse<StatisticsModel>>($"{PATH}/Statistics");
+        return apiResponse?.Data;
     }
 }
 

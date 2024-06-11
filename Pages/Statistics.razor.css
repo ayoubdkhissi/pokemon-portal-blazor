@@ -2,6 +2,10 @@
     font-size: 0.75rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.95rem;
     text-align: center;
+}
+
+.chart-card {
+    margin-top: auto; /* Ensure it pushes the card to the bottom if necessary */
 }

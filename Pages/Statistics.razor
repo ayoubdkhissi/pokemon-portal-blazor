@@ -9,9 +9,7 @@
 @if (StatisticsModel == null)
 {
     <div class="d-flex justify-content-center my-4">
-        <div class="spinner-border text-primary" role="status">
-            <span class="sr-only"></span>
-        </div>
+        <Spinner Type="SpinnerType.Dots" Class="my-4" Color="SpinnerColor.Primary" />
     </div>
 }
 else
@@ -20,20 +18,24 @@ else
         <div class="row mx-0">
             <div class="col-md-3">
                 <div class="chart-title">Top Pokémon by Catch Count</div>
-                <CatchCountCard Data="StatisticsModel?.CatchCountCardData" />
+                <CatchCountCard Data="StatisticsModel?.CatchCountCardData"/>
             </div>
 
-            <div class="col-md-3">
-                <CatchCountByPower Data="StatisticsModel?.CatchCountByPower"/>
+            <div class="col-md-3 mt-2">
+                <PokemonsByPower Data="StatisticsModel?.PokemonsByPower" />
             </div>
 
-            
+
+            <div class="col-md-3 mt-2">
+                <CatchCountByPower Data="StatisticsModel?.PokemonsByPower.Where(p => p.CatchCount > 0).ToList()" />
+            </div>
+
 
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="chart-title">Averages by Power</div>
-                <AveragesByPower Data="StatisticsModel?.AveragesByPower"/>
+                <div class="chart-title">Number of pokémons, Avg Attach, and Avg Defense by Power</div>
+                <AveragesByPower Data="StatisticsModel?.AveragesByPower" />
             </div>
         </div>
     </div>

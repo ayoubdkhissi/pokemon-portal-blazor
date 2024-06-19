@@ -16,25 +16,22 @@ else
 {
     <div class="container">
         <div class="row mx-0">
-            <div class="col-md-3">
-                <div class="chart-title">Top Pokémon by Catch Count</div>
-                <CatchCountCard Data="StatisticsModel?.CatchCountCardData"/>
+            <div class="col-md-4 mb-4 d-flex flex-column justify-content-center align-items-center">
+                <div class="chart-title text-center">Top Pokémon by Catch Count</div>
+                <CatchCountCard Data="StatisticsModel?.CatchCountCardData" />
             </div>
-
-            <div class="col-md-3 mt-2">
+            <div class="col-md-4 mb-4">
+                <div class="chart-title">Pokémons by Power</div>
                 <PokemonsByPower Data="StatisticsModel?.PokemonsByPower" />
             </div>
-
-
-            <div class="col-md-3 mt-2">
+            <div class="col-md-4 mb-4">
+                <div class="chart-title">Catch Count by Power</div>
                 <CatchCountByPower Data="StatisticsModel?.PokemonsByPower.Where(p => p.CatchCount > 0).ToList()" />
             </div>
-
-
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="chart-title">Number of pokémons, Avg Attach, and Avg Defense by Power</div>
+            <div class="col-md-12 mb-4">
+                <div class="chart-title">Number of Pokémon, Avg Attack, and Avg Defense by Power</div>
                 <AveragesByPower Data="StatisticsModel?.AveragesByPower" />
             </div>
         </div>

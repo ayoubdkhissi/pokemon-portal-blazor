@@ -15,7 +15,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "API_BASE_URL": ""
+        "API_BASE_URL": "https://pokemon-portal-prd-api.azurewebsites.net"
       },
       "dotnetRunMessages": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
